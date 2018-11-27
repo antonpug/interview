@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "query-string": "^6.2.0",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-router": "^4.3.1",
@@ -10,7 +11,8 @@
     "react-scripts": "2.1.1",
     "react-select": "^2.0.0-beta.7",
     "simple-react-form": "^2.2.1",
-    "simple-react-form-material-ui": "^1.7.13"
+    "simple-react-form-material-ui": "^1.7.13",
+    "wolkenkit-client": "^2.0.0"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -26,5 +28,25 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "wolkenkit": {
+    "application": "interview",
+    "runtime": {
+      "version": "2.0.0"
+    },
+    "environments": {
+      "default": {
+        "api": {
+          "address": {
+            "host": "local.wolkenkit.io",
+            "port": 3010
+          },
+          "allowAccessFrom": "*"
+        },
+        "node": {
+          "environment": "development"
+        }
+      }
+    }
+  }
 }

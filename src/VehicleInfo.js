@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import wolkenkit from 'wolkenkit-client';
 
 class VehicleInfo extends Component {
     constructor(props) {
@@ -16,11 +17,38 @@ class VehicleInfo extends Component {
     }
 
     handleSubmit(event) {
-        window.location = 'http://google.com';
         event.preventDefault();
+        if(this.service) {
+            const data = { 
+                firstName: this.state.data.firstName || '',
+                lastName: this.state.data.lastName || '',
+                email: this.state.data.email || '',
+                year: this.state.data.year || '',
+                make: this.state.data.make || '',
+                model: this.state.data.model || ''
+            };
+
+            this.service.quote.quote().save(data);
+            console.log(data);
+        }
+        setTimeout(() => {
+            window.location = 'http://localhost:3001/?email=' + this.state.data.email;
+        }, 1500);
+        
     }
 
+    async run() {
+        try {
+            this.service = await wolkenkit.connect({ host: 'local.wolkenkit.io', port: 3010 });
+            console.log('Yay, you are connected!', this.service);
+    
+        } catch (ex) {
+            console.error(ex);
+        }
+    };
+
     render() {
+    this.run();
     return (
         <div>
         <header className="App-header">
